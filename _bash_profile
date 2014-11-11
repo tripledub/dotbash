@@ -1,0 +1,12 @@
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+alias ll='ls -lh'
+alias be='bundle exec'
+alias gs='git status'
+alias reload='source ~/.bash_profile'
+
+source ~/.bash/completion_scripts/git-completion.bash
+complete -C ~/.bash/completion_scripts/rake-completion.rb -o default rake
+complete -C ~/.bash/completion_scripts/project-completion.rb -o default c
+complete -C ~/.bash/completion_scripts/capistrano-completion.rb-o default cap
+source ~/.bash/prompt.bash
