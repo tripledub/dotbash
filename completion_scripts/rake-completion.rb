@@ -1,4 +1,6 @@
-nstall, add the following line to your .bash_profile or .bashrc
+# !/usr/bin/env ruby
+# 
+# install, add the following line to your .bash_profile or .bashrc
 # complete -C path/to/rake_completion -o default rake
 
 # Rake completion will return matching rake tasks given typed text. This way

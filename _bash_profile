@@ -1,9 +1,11 @@
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+export EDITOR=vim
 alias ll='ls -lh'
 alias be='bundle exec'
 alias gs='git status'
 alias reload='source ~/.bash_profile'
+alias ggr="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 source ~/.bash/completion_scripts/git-completion.bash
 complete -C ~/.bash/completion_scripts/rake-completion.rb -o default rake

@@ -65,7 +65,7 @@ function check_user {
   fi
 }
 
-# Output all available colour codes 
+# Output all available colour codes
 # Used to create new colour variables
 function colours {
   for i in {0..255}; do echo -e "\033[38;05;${i}m${i}"; done | column -c 80 -s '  '; echo -e "\e[m"
@@ -147,14 +147,14 @@ alias floatme='wmctrl -r :ACTIVE: -b remove,maximized_horz;wmctrl -r :ACTIVE: -b
 function chmod_ref {
   echo "
         OWNER  GROUP   WORLD
-        r w x  r w x   r w x 
-        1 1 1  1 0 1   1 0 1 
-          7      5       5  
+        r w x  r w x   r w x
+        1 1 1  1 0 1   1 0 1
+          7      5       5
           |______|_______|
-                 |   
+                 |
                 755
   "
-  
+
   echo "
  000  001  010  011  100  101  110  111
   0    1    2    3    4    5    6    7

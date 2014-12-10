@@ -14,13 +14,25 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
-"Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'sjl/vitality.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vitaly/vim-syntastic-coffee'
+Plugin 'tpope/vim-commentary'
+Plugin 'mattn/emmet-vim'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+Bundle "tmhedberg/matchit"
+Bundle "ecomba/vim-ruby-refactoring"
+Bundle "craigemery/vim-autotag"
+Bundle "p0deje/vim-ruby-interpolation"
+Bundle "godlygeek/tabular"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
