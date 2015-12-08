@@ -8,7 +8,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'slim-template/vim-slim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
@@ -20,6 +22,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'sjl/vitality.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-rails'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vitaly/vim-syntastic-coffee'
 Plugin 'tpope/vim-commentary'
@@ -39,6 +43,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on
+let g:syntastic_javascript_checkers = ['jshint']
 
 set t_Co=256
 set background=dark
@@ -49,10 +54,14 @@ let g:airline_theme='powerlineish'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#syntastic#enabled = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 "autocmd vimenter * NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
-"let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1
 
 "Map Ctrl-`to Toggle Nerdtree
 map <C-l> :NERDTreeToggle<CR>
@@ -63,7 +72,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map <TAB> ==
-
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*  " Linux/MacOSX
 
 set showcmd                       " Display incomplete commands.
@@ -128,10 +137,20 @@ set lcs=eol:¬
 map , \
 
 " RSpec.vim mappings
+let g:rspec_command = "!bundle exec rspec -I . -f d -c {spec}"
 map <Leader>tf :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
+
+" Run currently open cucumber feature file
+map <Leader>cf :w<cr>:!cucumber %<cr>
+
+" Run current cucumber scenario
+map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
+
+" Run all cucumber feature files
+map <Leader>ct :w<cr>:!cucumber<cr>
 
 " Misc mappings.
 nmap <leader>dd :call InsertDebugger()<CR>
