@@ -7,6 +7,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
+Plugin 'avakhov/vim-yaml'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'scrooloose/nerdtree'
@@ -24,6 +28,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-haml'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vitaly/vim-syntastic-coffee'
 Plugin 'tpope/vim-commentary'
@@ -37,6 +42,10 @@ Bundle "ecomba/vim-ruby-refactoring"
 Bundle "craigemery/vim-autotag"
 Bundle "p0deje/vim-ruby-interpolation"
 Bundle "godlygeek/tabular"
+Bundle "altercation/vim-colors-solarized"
+Bundle "vim-airline/vim-airline-themes"
+Bundle "ngmy/vim-rubocop"
+Bundle "derekwyatt/vim-scala"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,13 +53,14 @@ filetype plugin indent on    " required
 
 syntax on
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 set t_Co=256
 set background=dark
-colorscheme badwolf
+colorscheme solarized
 let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#syntastic#enabled = 1

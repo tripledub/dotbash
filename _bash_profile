@@ -1,16 +1,27 @@
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR=vim
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GEMNASIUM_TOKEN=92d67751ce42a50f50774c658b62277b
 alias ll='ls -lh'
 alias be='bundle exec'
 alias gs='git status'
 alias reload='source ~/.bash_profile'
 alias ggr="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
-eval $(thefuck --alias)
 
 source ~/.bash/completion_scripts/git-completion.bash
 complete -C ~/.bash/completion_scripts/rake-completion.rb -o default rake
 complete -C ~/.bash/completion_scripts/project-completion.rb -o default c
 complete -C ~/.bash/completion_scripts/capistrano-completion.rb-o default cap
-source ~/.bash/prompt.bash
+# source ~/.bash/prompt.bash
+function _update_ps1() {
+  PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+export PATH="/usr/local/sbin:$PATH"
